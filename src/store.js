@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore, combineReducers} from 'redux';
 import { localStorageMiddleware, promiseMiddleware } from './middleware';
 import { createLogger } from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import auth from './reducers/auth';
 import common from './reducers/common';
@@ -27,6 +28,6 @@ const logger = createLogger({
    collapsed: (getState, action) => action.type === 'ASYNC_START'
 });
 
-const store = createStore(reducer, applyMiddleware(promiseMiddleware, localStorageMiddleware, logger));
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(promiseMiddleware, localStorageMiddleware, logger)));
 
 export default store;
