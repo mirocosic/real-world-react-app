@@ -1,4 +1,5 @@
 import agent from './agent';
+import LogRocket from 'logrocket';
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
@@ -42,7 +43,19 @@ const localStorageMiddleware = store => next => action => {
 
 };
 
+const logRocketIdentifyUser = store => next => action => {
+  if (action.type === 'REGISTER' || action.type === 'LOGIN') {
+    if (!action.error) {
+      LogRocket.identify(action.payload.user.email);
+      console.log(action.payload.user.email);
+    }
+  }
+
+  next(action);
+}
+
 export {
   localStorageMiddleware,
-  promiseMiddleware
+  promiseMiddleware,
+  logRocketIdentifyUser
 };

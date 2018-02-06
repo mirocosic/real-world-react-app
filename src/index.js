@@ -15,6 +15,8 @@ import ProfileFavorites from './components/ProfileFavorites';
 
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
+
+
 ReactDOM.render((
   <Provider store={store}>
     <Router history={hashHistory}>

@@ -1,3 +1,4 @@
+
 const defaultState = {
   appName: 'Conduit',
   token: null

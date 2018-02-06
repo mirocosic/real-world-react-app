@@ -24,7 +24,6 @@ export default (state = {}, action) => {
      } else {
        return state;
      }
-     break;
    case 'ADD_TAG':
      return {
        ...state,
